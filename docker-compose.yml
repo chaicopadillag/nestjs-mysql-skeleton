@@ -1,0 +1,32 @@
+version: '3'
+name: 'nestjs-skeleton'
+
+services:
+  mariadb:
+    image: mariadb:10
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'nestjs_skeleton'
+      MYSQL_USER: 'nestjs_skeleton'
+      MYSQL_PASSWORD: 'nestjs_skeleton'
+      MYSQL_HOST: 'db'
+      MYSQL_PORT: '3306'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_CHARSET: 'utf8'
+      MYSQL_COLLATION: 'utf8_general_ci'
+      MYSQL_TIMEZONE: 'America/Lima'
+      MYSQL_INITDB_SKIP_TZINFO: 'yes'
+      MYSQL_INITDB_ROOT_HOST: '%'
+      MYSQL_INITDB_ROOT_HOST_ALL_FILES: '%'
+      MYSQL_INITDB_ROOT_PASSWORD: 'root'
+      MYSQL_INITDB_ROOT_USER: 'root'
+      MYSQL_INITDB_DATABASE: 'nestjs_skeleton'
+      MYSQL_INITDB_USER: 'nestjs_skeleton'
+      MYSQL_INITDB_PASSWORD: 'nestjs_skeleton'
+      MYSQL_INITDB_CHARACTER_SET: 'utf8mb4'
+      MYSQL_INITDB_COLLATION: 'utf8mb4_unicode_ci'
+      MYSQL_INITDB_TIMEZONE: 'America/Lima'
+    volumes:
+      - ./mariadb/db:/var/lib/mysql
