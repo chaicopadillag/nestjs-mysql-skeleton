@@ -16,7 +16,16 @@
     "test": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "yarn typeorm migration:generate -d src/database/typeOrm.config.ts",
+    "m:g": "yarn migration:generate src/database/migrations/mg",
+    "m:run": "yarn typeorm -- migration:run -d src/database/typeOrm.config.ts",
+    "migration:revert": "yarn typeorm -- migration:revert -d src/database/typeOrm.config.ts",
+    "migration:drop": "yarn typeorm schema:drop -d src/database/typeOrm.config.ts",
+    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config -n src/database/typeOrm.config.ts",
+    "db:seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed -n src/database/typeOrmSeed.config.ts",
+    "db:refresh": "yarn migration:drop && yarn m:run && yarn db:seed"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
@@ -38,6 +47,7 @@
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
+    "@ngneat/falso": "^6.1.0",
     "@types/express": "^4.17.13",
     "@types/jest": "28.1.4",
     "@types/node": "^16.0.0",
@@ -55,6 +65,7 @@
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
     "tsconfig-paths": "4.0.0",
+    "typeorm-seeding": "^1.6.1",
     "typescript": "^4.3.5"
   },
   "jest": {

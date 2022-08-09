@@ -26,7 +26,7 @@ import { appEnvironment } from 'src/env/app.environment';
           extra: {
             charset: 'utf8_general_ci',
           },
-          synchronize: true,
+          synchronize: false,
           logging: true,
           autoLoadEntities: true,
         };
