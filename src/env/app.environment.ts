@@ -10,4 +10,8 @@ export const appEnvironment = registerAs('appEnvironment', () => ({
     PASSWORD: process.env.DB_PASSWORD || 'root',
     NAME: process.env.DB_NAME || 'test',
   },
+  jwt: {
+    SECRET: process.env.JWT_SECRET,
+  },
+  ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS,
 }));

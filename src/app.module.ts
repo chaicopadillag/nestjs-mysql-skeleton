@@ -6,9 +6,15 @@ import { DatabaseModule } from './database/database.module';
 import { appEnvironment, appEnvironmentValidate } from './env';
 import { ModulesModule } from './modules/modules.module';
 import { CommonModule } from './common/common.module';
+import { AuthModule } from './auth/auth.module';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 10,
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
       load: [appEnvironment],
@@ -17,6 +23,7 @@ import { CommonModule } from './common/common.module';
     DatabaseModule,
     ModulesModule,
     CommonModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
