@@ -1,10 +1,8 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { LoginDto } from './dto/login.dto';
 
-import { GetAuthUser, GetRawHeader } from './decorators';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { GetAuthUser, GetRawHeader, IsPublic } from './decorators';
 import { AuthService } from './auth.service';
-import { IsPublic } from './decorators';
 
 @Controller('auth')
 export class AuthController {
@@ -13,7 +11,7 @@ export class AuthController {
   @IsPublic()
   @Post('login')
   async login(@Body() loginDto: LoginDto) {
-    return await this.authService.login(loginDto);
+    return this.authService.login(loginDto);
   }
 
   // @UseGuards(JwtAuthGuard)

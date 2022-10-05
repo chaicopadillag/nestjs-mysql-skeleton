@@ -11,8 +11,8 @@ export class AuthService {
     this.users.push({
       id: 1,
       name: 'Code Dev',
-      email: '******',
-      password: '******',
+      email: null,
+      password: null,
       permissions: ['read', 'create', 'update', 'delete'],
     });
   }

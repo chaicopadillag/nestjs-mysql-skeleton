@@ -8,7 +8,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import helmet from 'helmet';
 import * as cookieParser from 'cookie-parser';
-import { nestCsrf, CsrfFilter } from 'ncsrf';
+import { nestCsrf } from 'ncsrf';
 
 import { AppModule } from './app.module';
 
